@@ -10,7 +10,12 @@ const User = _conn.define('user', { // create table guidelines
   name: Sequelize.STRING
 });
 
-_conn.sync({ force: true });
+_conn.sync({ force: true })
+  .then( () => {
+    return User.create({ name: 'Tyrion' })
+  }).then( (user) => {
+    console.log(user.get().name);
+  })
 
 app.listen(port, () => {
   console.log(`** Listening on Port ${port} **`);
