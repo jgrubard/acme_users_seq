@@ -12,10 +12,16 @@ const User = _conn.define('user', { // create table guidelines
 
 _conn.sync({ force: true })
   .then( () => {
-    return User.create({ name: 'Tyrion' })
-  }).then( (user) => {
-    console.log(user.get().name);
-  })
+    return Promise.all([
+      User.create({ name: 'Cersei' }),
+      User.create({ name: 'Jaime' }),
+      User.create({ name: 'Tyrion' })
+    ]);
+  }).then( (users) => {
+    return User.findAll({ where: { name: 'Jaime' }})
+  }).then( (users) => {
+    console.log(users[0].name);
+  });
 
 app.listen(port, () => {
   console.log(`** Listening on Port ${port} **`);
