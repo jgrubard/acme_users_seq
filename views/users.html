@@ -1,0 +1,21 @@
+{% extends './layout.html' %}
+{% block content %}
+  Username
+  <br/>
+  <input type='text' class='form-control' placeholder='Enter name for user'/>
+  <br/>
+  <button type='button' class='btn btn-primary'>
+    Create User
+  </button>
+  <ul class='list-group'>
+    {% for user in users %}
+      <li class='list-group-item'>
+        {{ user.name }}
+        <br/>
+        <button type='button' class='btn btn-danger'>
+          Delete
+        </button>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
