@@ -1,0 +1,26 @@
+
+{% extends './layout.html' %}
+{% block content %}
+<div class='jumbotron'>
+  <strong>{{title}}</strong>
+  <br/>
+  <br/>
+  The user with an id of <b>{{ path.slice(-1) }}</b> does not exist!
+  <br/>
+  Please do not enter an invalid User ID!
+</div>
+<br/>
+<a href='/users'>Return to All Users</a>
+{% endblock %}
+
+
+
+<!--
+<html>
+<head>
+  <title>Error!</title>
+</head>
+<body>
+  You Have an Error!
+</body>
+</html> -->

@@ -2,12 +2,16 @@ const express = require('express');
 const app = express();
 const db = require('./db');
 const path = require('path');
-const User = db.models.User;
 const nunjucks = require('nunjucks');
 nunjucks.configure({ noCache: true });
 
+app.use(require('method-override')('_method'));
+app.use(require('body-parser').urlencoded());
+
 app.set('view engine', 'html');
 app.engine('html', nunjucks.render);
+
+const User = db.models.User;
 
 app.use('/public', express.static(path.join(__dirname, 'node_modules')));
 

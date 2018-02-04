@@ -1,0 +1,11 @@
+{% extends './layout.html' %}
+{% block content %}
+<div class='jumbotron'>
+  {{ user.name }}'s Page
+  <br/>
+  <br/>
+  User ID: <strong>{{user.id}}</strong>
+</div>
+<br/>
+<a href='/users'>Return to All Users</a>
+{% endblock %}

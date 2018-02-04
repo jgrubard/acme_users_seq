@@ -1,20 +1,24 @@
 {% extends './layout.html' %}
 {% block content %}
-  Username
-  <br/>
-  <input type='text' class='form-control' placeholder='Enter name for user'/>
-  <br/>
-  <button type='button' class='btn btn-primary'>
-    Create User
-  </button>
+<form action='/users' method='POST'>
+  <div id='user-input'>
+    <label>Username</label>
+    <br/>
+    <input class='form-control' name='name' placeholder='Enter name for user'/>
+  </div>
+  <button id='create' class='btn btn-primary'>Create User</button>
+</form>
   <ul class='list-group'>
     {% for user in users %}
       <li class='list-group-item'>
-        {{ user.name }}
-        <br/>
-        <button type='button' class='btn btn-danger'>
-          Delete
-        </button>
+        <a href='users/{{user.id}}'>
+          <div class='font-weight-bold'>
+            {{ user.name }}
+          </div>
+        </a>
+        <form method='POST' action='/users/{{user.id}}?_method=DELETE'>
+          <button input='button' value='delete' class='btn btn-danger'>Delete</button>
+        </form>
       </li>
     {% endfor %}
   </ul>
